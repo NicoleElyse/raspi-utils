@@ -5,15 +5,18 @@
 
 echo -e "Running raspi-firstboot\nUpgrading system..."
 
+sudo apt-get -qq -y upgrade
 
 echo "Installing utilities..."
 
-packages = weavedconnectd x11vnc vim fbi sendmail
+packages="weavedconnectd x11vnc vim fbi sendmail"
 
+for i in $packages; do echo -e "\tInstalling $i"; sudo apt-get -qq -y install $i; done
 
 sudo weavedinstaller
 
 echo "Disabling X Server"
+sudo update-rc.d lightdm disable 2
 
 echo "Adding Administrative User"
 sudo adduser nicole
