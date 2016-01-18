@@ -16,7 +16,7 @@ for i in $packages; do echo -e "\tInstalling $i"; sudo apt-get -qq -y install $i
 sudo weavedinstaller
 
 echo "Disabling X Server"
-sudo update-rc.d lightdm disable 2
+sudo update-rc.d lightdm disable
 
 echo "Adding Administrative User"
 sudo adduser nicole
